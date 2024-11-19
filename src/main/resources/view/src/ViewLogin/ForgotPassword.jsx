@@ -1,17 +1,18 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import NewPassword from "./NewPassword";
 
 const ForgotPassword = () => {
     const [forgotEmail, setForgotEmail] = useState("");
     const [codeForgot, setcodeForgot] = useState("");
+    const navigate = useNavigate();
 
     const sendEmail = () => {
-        console.log("Email để gửi mã xác nhận là: ", forgotEmail);
+        navigate("/forgot-password", { state: { email: forgotEmail, fromLayout: true } });
     };
 
     const checkForgotPassword = () => {
-        console.log("Emal đã được xác nhận gửi:", forgotEmail);
-        console.log("Mã xác nhận là: ", codeForgot);
+        navigate("/new-password", { state: { email: forgotEmail, fromLayout: true } });
     }
 
     return (
@@ -42,11 +43,11 @@ const ForgotPassword = () => {
             </form>
             <div className="row">
                 <small>
-                    Bạn đã nhớ ra mật khẩu của mình? <Link to="/login" style={{ textDecoration: "none" }}> Đăng Nhập </Link>
+                    Bạn đã nhớ ra mật khẩu của mình? <Link to="/login" state={{ fromLayout: true }} style={{ textDecoration: "none" }}> Đăng Nhập </Link>
                 </small>
             </div>
         </div>
     );
 };
 
-export default ForgotPassword
+export default ForgotPassword;

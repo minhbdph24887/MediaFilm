@@ -1,14 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const NewPassword = () => {
     const [email, setEmail] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
+    const navigate = useNavigate();
 
     const handkeCheckNewPassword = () => {
-        console.log("Email là: ", email);
-        console.log("Mật khẩu mới là: ", newPassword);
-        console.log("Mật khẩu mới nhập lại là: ", confirmNewPassword);
+        navigate("/login", { state: { fromLayout: true } });
     };
 
     return (
@@ -21,7 +21,7 @@ const NewPassword = () => {
                 <div className="form-group">
                     <label className="form-label">Email: </label>
                     <div className="input-group mb-3">
-                        <input type="text" name="email" className="form-control form-control-lg bg-light fs-6" placeholder="Nhập email" value={email} onChange={(e) => setEmail(e.target.value)} readonly disable />
+                        <input type="text" name="email" className="form-control form-control-lg bg-light fs-6" placeholder="Nhập email" value={email} onChange={(e) => setEmail(e.target.value)} readOnly disabled />
                     </div>
                 </div>
                 <div className="form-group">
@@ -44,4 +44,4 @@ const NewPassword = () => {
     );
 };
 
-export default NewPassword
+export default NewPassword;

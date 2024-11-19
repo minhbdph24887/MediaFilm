@@ -1,9 +1,12 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
+import { useLoading } from "../layout/LoadingContext";
 import logo from "../assets/images/logo.png";
 import "../assets/Css/DeginLogin/Login.css";
 
 const LayoutLogin = () => {
+  const { localLoading } = useLoading();
+
   return (
     <div className="container d-flex justify-content-center align-items-center min-vh-100">
       <div className="row border rounded-5 p-3 bg-white shadow box-area" style={{ width: "92%", height: "600px" }}>
@@ -18,7 +21,12 @@ const LayoutLogin = () => {
             Chỉ cần bạn muốn phim nào, chúng tôi đáp ứng cho bạn.
           </small>
         </div>
-        <div className="col-md-6 right-box">
+        <div className="col-md-6 right-box position-relative">
+          {localLoading && (
+            <div style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", display: "flex", justifyContent: "center", alignItems: "center", background: "rgba(255, 255, 255, 0.7)", zIndex: 10, }} >
+              <div className="spinner-border" role="status" />
+            </div>
+          )}
           <div className="container">
             <Outlet />
           </div>

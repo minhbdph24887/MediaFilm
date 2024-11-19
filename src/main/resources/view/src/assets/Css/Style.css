@@ -1,3 +1,47 @@
 * {
     font-family: 'Poppins', sans-serif;
 }
+
+.animationButton:hover {
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3) !important;
+    transition: all 0.3s ease-in-out !important;
+}
+
+.animationButton:active {
+    transform: scale(0.95) !important;
+    transition: transform 0.2s ease !important;
+}
+
+.animationButton:disabled {
+    background-color: #cccccc !important;
+    color: #ffffff !important;
+    cursor: not-allowed !important;
+    opacity: 0.7 !important;
+    transform: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    border: none !important;
+}
+
+.animationButton:disabled:focus,
+.animationButton:disabled:active {
+    outline: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+
+.loadingButton {
+    animation: spinner 1s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

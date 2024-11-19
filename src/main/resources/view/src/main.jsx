@@ -1,11 +1,12 @@
-import React, { StrictMode, useState } from 'react'
-import { createRoot } from 'react-dom/client'
-import './assets/Css/Style.css'
-import 'bootstrap/dist/css/bootstrap.min.css'
-import LoadingApp from './layout/Loading'
+import React, { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import "bootstrap-icons/font/bootstrap-icons.css";
+import "./assets/Css/Style.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import App from "./App";
 
-createRoot(document.getElementById('root')).render(
+createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <LoadingApp />
-  </StrictMode>,
+    <App />
+  </StrictMode>
 )
