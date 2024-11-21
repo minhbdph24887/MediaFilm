@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext } from "react";
 const LoadingContext = createContext();
 
 export const LoadingProvider = ({ children }) => {
-  const [globalLoading, setGlobalLoading] = useState(false);
+  const [globalLoading, setGlobalLoading] = useState(true);
   const [localLoading, setLocalLoading] = useState(false);
 
   const showGlobalLoading = () => setGlobalLoading(true);
@@ -13,7 +13,15 @@ export const LoadingProvider = ({ children }) => {
   const hideLocalLoading = () => setLocalLoading(false);
 
   return (
-    <LoadingContext.Provider value={{ globalLoading, showGlobalLoading, hideGlobalLoading, localLoading, showLocalLoading, hideLocalLoading, }} >
+    <LoadingContext.Provider
+      value={{
+        globalLoading,
+        showGlobalLoading,
+        hideGlobalLoading,
+        localLoading,
+        showLocalLoading,
+        hideLocalLoading,
+      }} >
       {children}
     </LoadingContext.Provider>
   );

@@ -5,10 +5,16 @@ const NewPassword = () => {
     const [email, setEmail] = useState("");
     const [newPassword, setNewPassword] = useState("");
     const [confirmNewPassword, setConfirmNewPassword] = useState("");
+    const [loading, setLoading] = useState(false);
     const navigate = useNavigate();
 
+    const isButtonDisabled = !email || !newPassword || !confirmNewPassword;
     const handkeCheckNewPassword = () => {
-        navigate("/login", { state: { fromLayout: true } });
+        setLoading(true);
+        setTimeout(() => {
+            setLoading(false);
+            navigate("/login", { state: { fromLayout: true } });
+        }, 2000);
     };
 
     return (
@@ -21,23 +27,50 @@ const NewPassword = () => {
                 <div className="form-group">
                     <label className="form-label">Email: </label>
                     <div className="input-group mb-3">
-                        <input type="text" name="email" className="form-control form-control-lg bg-light fs-6" placeholder="Nhập email" value={email} onChange={(e) => setEmail(e.target.value)} readOnly disabled />
+                        <input type="text"
+                            name="email"
+                            className="form-control form-control-lg bg-light fs-6"
+                            placeholder="Nhập email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            readOnly disabled />
                     </div>
                 </div>
                 <div className="form-group">
                     <label className="form-label">Mật khẩu mới: </label>
                     <div className="input-group mb-3">
-                        <input type="password" name="newPassword" className="form-control form-control-lg bg-light fs-6" placeholder="Mời nhập mật khẩu mới" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+                        <input type="password"
+                            name="newPassword"
+                            className="form-control form-control-lg bg-light fs-6"
+                            placeholder="Mời nhập mật khẩu mới"
+                            value={newPassword}
+                            onChange={(e) => setNewPassword(e.target.value)} />
                     </div>
                 </div>
                 <div className="form-group">
                     <label className="form-label">Nhập lại mật khẩu: </label>
                     <div className="input-group mb-3">
-                        <input type="password" name="confirmNewPassword" className="form-control form-control-lg bg-light fs-6" placeholder="Mời nhập lại mật khẩu" value={confirmNewPassword} onChange={(e) => setConfirmNewPassword(e.target.value)} />
+                        <input type="password"
+                            name="confirmNewPassword"
+                            className="form-control form-control-lg bg-light fs-6"
+                            placeholder="Mời nhập lại mật khẩu"
+                            value={confirmNewPassword}
+                            onChange={(e) => setConfirmNewPassword(e.target.value)} />
                     </div>
                 </div>
                 <div className="input-group mb-3">
-                    <button type="button" className="btn btn-lg btn-primary w-100 fs-6" onClick={handkeCheckNewPassword}>Hoàn Thành</button>
+                    <button type="button"
+                        className="btn btn-lg btn-primary w-100 fs-6 animationButton"
+                        onClick={handkeCheckNewPassword}
+                        disabled={loading || isButtonDisabled}>
+                        {loading ? (
+                            <>
+                                <span className="spinner-border spinner-border-sm me-2 loadingButton"></span>
+                            </>
+                        ) : (
+                            "Hoàn Thành"
+                        )}
+                    </button>
                 </div>
             </form>
         </div>

@@ -42,16 +42,32 @@ const Login = () => {
       </div>
       <form>
         <div className="d-flex">
-          <label className="form-label me-2" style={{ width: "92px", marginTop: "10px" }}>Email: </label>
+          <label className="form-label me-2"
+            style={{
+              width: "92px",
+              marginTop: "10px"
+            }}>Email: </label>
           <div className="input-group mb-3">
-            <input type="text" className="form-control form-control-lg bg-light fs-6" name="email" placeholder="Mời nhập email" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <input type="text"
+              className="form-control form-control-lg bg-light fs-6"
+              name="email"
+              placeholder="Mời nhập email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} />
           </div>
         </div>
         <div className="d-flex">
           <label className="form-label me-2" style={{ width: "92px", marginTop: "10px" }}>Mật khẩu: </label>
           <div className="input-group mb-3">
-            <input type={showPassword ? "text" : "password"} className="form-control form-control-lg bg-light fs-6" name="password" placeholder="Mời nhập mật khẩu" value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button type="button" className="input-group-text bg-light" onClick={() => setShowPassword(!showPassword)} >
+            <input type={showPassword ? "text" : "password"}
+              className="form-control form-control-lg bg-light fs-6"
+              name="password"
+              placeholder="Mời nhập mật khẩu"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} />
+            <button type="button"
+              className="input-group-text bg-light"
+              onClick={() => setShowPassword(!showPassword)} >
               {showPassword ? (
                 <i className="bi bi-eye-slash-fill"></i>
               ) : (
@@ -62,19 +78,31 @@ const Login = () => {
         </div>
         <div className="input-group mb-5 d-flex justify-content-between">
           <div className="form-check">
-            <input type="checkbox" className="form-check-input" id="formCheck" name="remember" checked={remember} onChange={() => setRemember(!remember)} />
+            <input type="checkbox"
+              className="form-check-input"
+              id="formCheck"
+              name="remember"
+              checked={remember}
+              onChange={() => setRemember(!remember)} />
             <label htmlFor="formCheck" className="form-check-label text-secondary">
               <small>Nhớ giúp tôi</small>
             </label>
           </div>
           <div className="forgot">
             <small>
-              <Link to="/forgot-password" state={{ fromLayout: true }} style={{ textDecoration: "none" }}> Quên mật khẩu? </Link>
+              <Link to="/forgot-password"
+                state={{ fromLayout: true }}
+                style={{ textDecoration: "none" }}>
+                Quên mật khẩu?
+              </Link>
             </small>
           </div>
         </div>
         <div className="input-group mb-3">
-          <button type="button" onClick={handleLogin} className="btn btn-lg btn-primary w-100 fs-6 animationButton" disabled={loading || isButtonDisabled} >
+          <button type="button"
+            onClick={handleLogin}
+            className="btn btn-lg btn-primary w-100 fs-6 animationButton"
+            disabled={loading || isButtonDisabled} >
             {loading ? (
               <>
                 <span className="spinner-border spinner-border-sm me-2 loadingButton"></span>
@@ -86,7 +114,10 @@ const Login = () => {
         </div>
         <div className="input-group mb-3">
           <a href="#" className="btn btn-lg btn-light w-100 fs-6">
-            <img src={googleIcon} style={{ width: "20px" }} className="me-2" alt="" />
+            <img src={googleIcon}
+              style={{ width: "20px" }}
+              className="me-2"
+              alt="" />
             <small>Đăng nhập bằng Google</small>
           </a>
         </div>
@@ -94,14 +125,11 @@ const Login = () => {
       <div className="row">
         <small>
           Bạn không có tài khoản?{" "}
-          <Link
-            to="/signup"
+          <Link to="/signup"
             state={{ fromLayout: true }}
-            style={{ textDecoration: "none" }}
-          >
+            style={{ textDecoration: "none" }}>
             Đăng ký
           </Link>
-
         </small>
       </div>
     </div>
